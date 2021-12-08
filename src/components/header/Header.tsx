@@ -1,13 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { StyledHeader } from './styles/Header.style';
 
-interface Props {
-
-}
+import { ReactComponent as BooksIcon } from './assets/books.svg';
+import { ReactComponent as BrandMobileIcon } from './assets/brand-mobile.svg';
+import { ReactComponent as BrandIcon } from './assets/brand.svg';
+import { ReactComponent as CartIcon } from './assets/cart.svg';
+import { ReactComponent as SearchIcon } from './assets/search.svg';
+import { HeaderMobileSearch } from './HeaderMobileSearch';
+import { SearchInput } from './SearchInput';
+interface Props {}
 
 export const Header = (props: Props) => {
+    const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+
+    const handleToggleMobileSearch = () => {
+        setIsMobileSearchOpen((isOpen) => !isOpen);
+    };
+
     return (
-        <div>
-            i am the headerhjj
-        </div>
-    )
-}
+        <StyledHeader>
+            <HeaderMobileSearch
+                handleToggleMobileSearch={handleToggleMobileSearch}
+                isMobileSearchOpen={isMobileSearchOpen}
+            />
+            <div className="logo__container">
+                <a href="/" className="logo__mobile">
+                    <BrandMobileIcon />
+                </a>
+                <a href="/" className="logo__desktop">
+                    <BrandIcon />
+                </a>
+            </div>
+
+            <div className="header__desktop__search">
+                <SearchInput />
+            </div>
+            <div className="header__action">
+                <button className="action__button search__icon" onClick={handleToggleMobileSearch}>
+                    <SearchIcon />
+                </button>
+                <button className="action__button books__index">
+                    <BooksIcon />
+                </button>
+                <button className="action__button">
+                    <CartIcon />
+                    <p className="cart__numbers">3</p>
+                </button>
+            </div>
+        </StyledHeader>
+    );
+};

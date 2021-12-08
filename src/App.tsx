@@ -1,10 +1,9 @@
 import React from 'react';
-import './reset.css'
+import { Home } from './pages';
+import './reset.css';
 
 function App() {
-  return (
-    <p>help</p>
-  );
+    return <Home />;
 }
 
 export default App;
