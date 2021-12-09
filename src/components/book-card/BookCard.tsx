@@ -3,8 +3,8 @@ import { StyledBookCard } from './BookCard.style';
 import { ReactComponent as CartIcon } from './assets/cart.svg';
 import { ReactComponent as HeartIcon } from './assets/heart.svg';
 import { ReactComponent as PeopleIcon } from './assets/people.svg';
-import BookCover from './assets/book-cover.png';
 import { RatingStars } from '..';
+import { addItemToCart, subtractQuantityFromBookItem, toggleCartDisplay, useCartContext } from '../../redux';
 
 interface Props {
     id: string;
@@ -37,6 +37,8 @@ export const BookCard = (props: Props) => {
         number_of_purchases,
     } = props;
 
+    const { state, dispatch } = useCartContext();
+
     const handleRenderAuthors = () => {
         const authorNames = authors.map((item) => item.name);
         return authorNames.join(', ');
@@ -48,6 +50,15 @@ export const BookCard = (props: Props) => {
     };
 
     const handleParseYear = () => new Date(release_date).getFullYear();
+
+    const handleAddItemToCart = (event: any) => {
+        event.preventDefault();
+        event.stopPropagation();
+        dispatch(addItemToCart(props));
+        dispatch(subtractQuantityFromBookItem(props));
+        dispatch(toggleCartDisplay());
+    };
+
     return (
         <StyledBookCard to={`/books/${id}`}>
             <div className="book__image">
@@ -90,7 +101,7 @@ export const BookCard = (props: Props) => {
                 </div>
 
                 {available_copies > 0 && (
-                    <button className="addToCart__button">
+                    <button className="addToCart__button" onClick={handleAddItemToCart}>
                         <CartIcon />
                         <span className="button__text">Add to Cart</span>
                     </button>

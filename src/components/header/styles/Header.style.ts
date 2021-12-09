@@ -34,6 +34,19 @@ export const StyledHeader = styled.header`
         place-items: center;
         position: relative;
         cursor: pointer;
+        transform: translateY(0px);
+        transition: transform 0.3s ease;
+
+        :hover {
+            opacity: 0.7;
+        }
+
+        :active {
+            transform: translateY(3px);
+            &:disabled {
+                transform: translateY(0px);
+            }
+        }
     }
     .cart__numbers {
         font-weight: bold;
@@ -70,8 +83,10 @@ export const StyledHeader = styled.header`
             display: none;
         }
         .books__index {
-            background: #f9f9fb;
-            border-radius: 100%;
+            :hover {
+                background: #f9f9fb;
+                border-radius: 100%;
+            }
         }
         .search__icon {
             display: none;

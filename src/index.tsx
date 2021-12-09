@@ -4,7 +4,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
-import { getBooksList } from './services/queries/getBooksList';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 export const client = new ApolloClient({
     uri: 'https://quidax-feec-graphql.herokuapp.com/graphql',
@@ -14,9 +15,11 @@ export const client = new ApolloClient({
 ReactDOM.render(
     <React.StrictMode>
         <ApolloProvider client={client}>
-            <Router>
-                <App />
-            </Router>
+            <Provider store={store}>
+                <Router>
+                    <App />
+                </Router>
+            </Provider>
         </ApolloProvider>
     </React.StrictMode>,
     document.getElementById('root'),

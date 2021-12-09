@@ -2,17 +2,32 @@ import React from 'react';
 import { StyledCart } from './styles/Cart.style';
 import { ReactComponent as BackArrowIcon } from './assets/back-arrow.svg';
 import { ReactComponent as CartIcon } from './assets/cart.svg';
+import { ReactComponent as EmptyIcon } from './assets/empty__cart.svg';
 import { CartItem } from './CartItem';
-interface Props {
-    handleToggleCart: () => void;
-    isCartOpen: boolean;
-}
+import { toggleCartDisplay, useCartContext } from '../../redux';
+import { Link } from 'react-router-dom';
 
-export const Cart = (props: Props) => {
-    const { handleToggleCart, isCartOpen } = props;
+export const Cart = () => {
+    const {
+        state: { isCartOpen, cart },
+        dispatch,
+    } = useCartContext();
+
+    const handleToggleCart = () => {
+        dispatch(toggleCartDisplay());
+    };
+
+    const handleCalculateCartSubTotal = () => {
+        const totalPrice = cart.reduce((a, b) => a + b.totalPrice, 0);
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        }).format(totalPrice);
+    };
+
     return (
         <StyledCart isCartOpen={isCartOpen}>
-            <div className="cart__empty"></div>
+            <div className="cart__empty" onClick={handleToggleCart}></div>
             <div className="cart__content">
                 <div className="cart__header">
                     <button className="back__button" onClick={handleToggleCart}>
@@ -26,23 +41,36 @@ export const Cart = (props: Props) => {
                     </div>
                 </div>
                 <div className="cart__content__body">
-                    <div className="cart__items">
-                        <CartItem />
-                        <CartItem />
-                        <CartItem />
-                        <CartItem />
-                    </div>
-                    <div className="book__cta">
-                        <div className="subtotal__container">
-                            <p className="subtotal__title">Subtotal</p>
-                            <p className="subtotal__price">$94.76</p>
-                        </div>
+                    {cart.length > 0 ? (
+                        <>
+                            <div className="cart__items">
+                                {cart.map((item) => {
+                                    return <CartItem key={item.id} {...item} />;
+                                })}
+                            </div>
+                            <div className="book__cta">
+                                <div className="subtotal__container">
+                                    <p className="subtotal__title">Subtotal</p>
+                                    <p className="subtotal__price">{handleCalculateCartSubTotal()}</p>
+                                </div>
 
-                        <button className="cta__button">
-                            <CartIcon />
-                            <p className="addToCart__text">Proceed to Checkout</p>
-                        </button>
-                    </div>
+                                <button className="cta__button">
+                                    <CartIcon />
+                                    <p className="addToCart__text">Proceed to Checkout</p>
+                                </button>
+                            </div>
+                        </>
+                    ) : (
+                        <div className="emptyCart__container">
+                            <EmptyIcon />
+                            <h1 className="cart__empty__title">Your cart is empty</h1>
+                            <p className="cart__message">Looks like you have not added any new books yet</p>
+
+                            <Link to="/" className="cta__button empty__button" onClick={handleToggleCart}>
+                                Back to books list
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </div>
         </StyledCart>

@@ -30,9 +30,23 @@ export const StyledHeaderMobileSearch = styled.div<{ isMobileSearchOpen: boolean
         width: 24px;
         display: grid;
         place-items: center;
+        transform: translateY(0px);
+        transition: transform 0.3s ease;
+
+        :hover {
+            opacity: 0.7;
+        }
+
+        :active {
+            transform: translateY(3px);
+            &:disabled {
+                transform: translateY(0px);
+            }
+        }
     }
 
     .search__bottom {
+        height: 100%;
     }
     @media screen and (min-width: 720px) {
         display: none;

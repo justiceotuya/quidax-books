@@ -141,6 +141,20 @@ export const StyledBookDetails = styled.div`
         justify-content: space-between;
         gap: 10px;
         border: none;
+        cursor: pointer;
+        transform: translateY(0px);
+        transition: transform 0.3s ease;
+
+        :hover {
+            opacity: 0.7;
+        }
+
+        :active {
+            transform: translateY(3px);
+            &:disabled {
+                transform: translateY(0px);
+            }
+        }
     }
     .cta__button__mobile {
         width: calc(100% - 60px);

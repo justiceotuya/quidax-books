@@ -12,6 +12,14 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { Book } from '../../types';
 import { getBookDetail } from '../../services/queries/getBookDetails';
+import {
+    useCartContext,
+    addItemToCart,
+    toggleCartDisplay,
+    subtractQuantityFromBookItem,
+    getCurrentActiveBook,
+} from '../../redux';
+import { useBookListContext } from '../../redux/slice';
 interface Props {}
 
 const months = [
@@ -34,19 +42,26 @@ interface IBookResult {
 }
 export const BookDetails = (props: Props) => {
     const pathname = window.location.pathname.split('/');
-
     const bookId = pathname[pathname.length - 1];
 
-    const { loading, error, data } = useQuery<IBookResult>(getBookDetail, {
-        variables: { id: bookId },
-    });
+    const { dispatch, state } = useCartContext();
+    const {
+        state: { currentBook, bookList },
+    } = useBookListContext();
+
+    console.log({ currentBook });
+
     const [bookDetails, setBookDetails] = useState({} as Book);
 
     useEffect(() => {
-        if (data) {
-            setBookDetails(data.book);
+        if (currentBook) {
+            setBookDetails(currentBook);
         }
-    }, [data]);
+    }, [currentBook]);
+
+    useEffect(() => {
+        dispatch(getCurrentActiveBook({ id: bookId }));
+    }, [bookList]);
 
     const handleRenderAuthors = () => {
         const authorNames = (bookDetails && bookDetails?.authors?.map((item) => item.name)) || [];
@@ -69,6 +84,14 @@ export const BookDetails = (props: Props) => {
         return `${day} ${monthName}, ${year}`;
     };
 
+    const handleAddItemToCart = (event: any) => {
+        event.preventDefault();
+        event.stopPropagation();
+        dispatch(addItemToCart(bookDetails));
+        dispatch(subtractQuantityFromBookItem(bookDetails));
+        dispatch(getCurrentActiveBook({ id: bookId }));
+    };
+
     const handleParseYear = () => new Date(bookDetails.release_date).getFullYear();
     return (
         <StyledBookDetails>
@@ -76,8 +99,8 @@ export const BookDetails = (props: Props) => {
                 <BackArrowIcon />
                 <span className="button__text">Back</span>
             </Link>
-
-            {data && (
+            {/* TODO: skeleton screen for loading */}
+            {bookDetails && (
                 <>
                     <div className="book__desktop__wrapper">
                         <div className="book__image">
@@ -91,8 +114,6 @@ export const BookDetails = (props: Props) => {
                                     <p className="available__text no_copies">Out of stock</p>
                                 )}
                                 <p className="book__price">
-                                    {/* {console.log({ currency: bookDetails['currency'] })}
-                                    {console.log(bookDetails.currency)} */}
                                     {bookDetails?.currency &&
                                         new Intl.NumberFormat('en-US', {
                                             style: 'currency',
@@ -102,7 +123,7 @@ export const BookDetails = (props: Props) => {
                             </div>
 
                             {bookDetails.available_copies > 0 && (
-                                <button className="cta__button cta__button__desktop">
+                                <button className="cta__button cta__button__desktop" onClick={handleAddItemToCart}>
                                     <div className="button__details">
                                         <CartIcon />
                                         <div className="button__text">
@@ -168,7 +189,7 @@ export const BookDetails = (props: Props) => {
                         </div>
                     </div>
                     {bookDetails.available_copies > 0 && (
-                        <button className="cta__button cta__button__mobile">
+                        <button className="cta__button cta__button__mobile" onClick={handleAddItemToCart}>
                             <div className="button__details">
                                 <CartIcon />
                                 <div className="button__text">

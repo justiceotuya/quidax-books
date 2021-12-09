@@ -48,6 +48,19 @@ export const StyledCart = styled.aside<{ isCartOpen: boolean }>`
         color: #000000;
         text-decoration: none;
         cursor: pointer;
+        transform: translateY(0px);
+        transition: transform 0.3s ease;
+
+        :hover {
+            opacity: 0.7;
+        }
+
+        :active {
+            transform: translateY(3px);
+            &:disabled {
+                transform: translateY(0px);
+            }
+        }
     }
     .button__text {
         display: block;
@@ -135,6 +148,19 @@ export const StyledCart = styled.aside<{ isCartOpen: boolean }>`
         border: none;
         align-items: center;
         cursor: pointer;
+        transform: translateY(0px);
+        transition: transform 0.3s ease;
+
+        :hover {
+            opacity: 0.7;
+        }
+
+        :active {
+            transform: translateY(3px);
+            &:disabled {
+                transform: translateY(0px);
+            }
+        }
     }
 
     .addToCart__text {
@@ -142,6 +168,35 @@ export const StyledCart = styled.aside<{ isCartOpen: boolean }>`
         font-size: 18px;
         line-height: 21px;
         color: #ffffff;
+    }
+    .cart__empty__title {
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .cart__message {
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+    .emptyCart__container {
+        display: grid;
+        place-content: center;
+        max-width: 315px;
+        margin: auto;
+
+        svg {
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            margin-bottom: 30px;
+        }
+    }
+    .empty__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
     }
 
     @media screen and (min-width: 481px) {

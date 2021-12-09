@@ -28,5 +28,18 @@ export const StyledSearchInput = styled.div`
         place-items: center;
         padding: 0;
         width: 40px;
+        transform: translateY(0px);
+        transition: transform 0.3s ease;
+
+        :hover {
+            opacity: 0.7;
+        }
+
+        :active {
+            transform: translateY(3px);
+            &:disabled {
+                transform: translateY(0px);
+            }
+        }
     }
 `;

@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import React, { useState, useEffect } from 'react';
+import { saveBookList } from '../../redux';
+import { useBookListContext } from '../../redux/slice';
+import { getBooksList } from '../../services/queries/getBooksList';
 import Cart from '../cart';
 import Header from '../header';
 import { StyledLayout } from './Layout.style';
@@ -6,14 +10,11 @@ import { ILayoutProps } from './types';
 
 export const Layout = (props: ILayoutProps) => {
     const { children } = props;
-    const [isCartOpen, setIsCartOpen] = useState(false);
-
-    const handleToggleCart = () => setIsCartOpen((isOpen) => !isOpen);
 
     return (
         <StyledLayout>
-            <Header isCartOpen={isCartOpen} handleToggleCart={handleToggleCart} />
-            <Cart isCartOpen={isCartOpen} handleToggleCart={handleToggleCart} />
+            <Header />
+            <Cart />
             <main className="layout__content">{children}</main>
         </StyledLayout>
     );

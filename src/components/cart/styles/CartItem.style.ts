@@ -43,6 +43,19 @@ export const StyledCartItem = styled.div`
         color: #000000;
         cursor: pointer;
         padding: 3px 19px 3px 2px;
+        transform: translateY(0px);
+        transition: transform 0.3s ease;
+
+        :hover {
+            opacity: 0.7;
+        }
+
+        :active {
+            transform: translateY(3px);
+            &:disabled {
+                transform: translateY(0px);
+            }
+        }
     }
     .book__quantity__container {
         display: flex;
@@ -87,8 +100,34 @@ export const StyledCartItem = styled.div`
         background: #f9f9fb;
         height: 28px;
         cursor: pointer;
+        transform: translateY(0px);
+        transition: transform 0.3s ease;
+
+        :hover {
+            opacity: 0.7;
+        }
+
+        :active {
+            transform: translateY(3px);
+            &:disabled {
+                transform: translateY(0px);
+            }
+        }
     }
     .add__button {
+        transform: translateY(0px);
+        transition: transform 0.3s ease;
+
+        :hover {
+            opacity: 0.7;
+        }
+
+        :active {
+            transform: translateY(3px);
+            &:disabled {
+                transform: translateY(0px);
+            }
+        }
     }
     .book__total__price {
         font-weight: bold;

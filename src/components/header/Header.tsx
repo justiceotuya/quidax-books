@@ -8,18 +8,29 @@ import { ReactComponent as CartIcon } from './assets/cart.svg';
 import { ReactComponent as SearchIcon } from './assets/search.svg';
 import { HeaderMobileSearch } from './HeaderMobileSearch';
 import { SearchInput } from './SearchInput';
-interface Props {
-    isCartOpen: boolean;
-    handleToggleCart: () => void;
-}
+import { toggleCartDisplay, useCartContext } from '../../redux';
+import { Link } from 'react-router-dom';
 
-export const Header = (props: Props) => {
-    const { handleToggleCart } = props;
+export const Header = () => {
+    const {
+        state: { isCartOpen, cart },
+        dispatch,
+    } = useCartContext();
+
+    const handleToggleCart = () => {
+        dispatch(toggleCartDisplay());
+    };
 
     const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
     const handleToggleMobileSearch = () => {
         setIsMobileSearchOpen((isOpen) => !isOpen);
+    };
+
+    const handleCalculateCartQuantity = () => {
+        const total: number = cart.reduce((a, b) => Number(a) + Number(b.quantity), 0);
+
+        return total;
     };
 
     return (
@@ -44,12 +55,12 @@ export const Header = (props: Props) => {
                 <button className="action__button search__icon" onClick={handleToggleMobileSearch}>
                     <SearchIcon />
                 </button>
-                <button className="action__button books__index">
+                <Link to="/" className="action__button books__index">
                     <BooksIcon />
-                </button>
+                </Link>
                 <button className="action__button" onClick={handleToggleCart}>
                     <CartIcon />
-                    <p className="cart__numbers">3</p>
+                    <p className="cart__numbers">{handleCalculateCartQuantity()}</p>
                 </button>
             </div>
         </StyledHeader>

@@ -104,7 +104,19 @@ export const StyledBookCard = styled(Link)`
         display: flex;
         cursor: pointer;
         align-items: center;
+        transform: translateY(0px);
+        transition: transform 0.3s ease;
 
+        :hover {
+            opacity: 0.7;
+        }
+
+        :active {
+            transform: translateY(3px);
+            &:disabled {
+                transform: translateY(0px);
+            }
+        }
         svg {
             height: 18px;
             width: 18px;

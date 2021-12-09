@@ -35,7 +35,7 @@ export const HeaderMobileSearch = (props: Props) => {
 
                 <SearchInput />
             </div>
-            <div className="search__bottom"></div>
+            <div className="search__bottom" onClick={handleToggleMobileSearch}></div>
         </StyledHeaderMobileSearch>
     );
 };
