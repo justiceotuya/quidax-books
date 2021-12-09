@@ -60,6 +60,8 @@ export const StyledHeader = styled.header`
         padding: 25px 40px;
         height: 100px;
         gap: 40px;
+        flex-wrap: unset;
+
         .logo__desktop {
             display: flex;
         }

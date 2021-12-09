@@ -65,7 +65,7 @@ export const StyledBookDetails = styled.div`
     }
     .book__performance {
         display: flex;
-        margin-bottom: 19px;
+        grid-area: 1/1/2/3;
         max-width: 198px;
         align-items: center;
     }
@@ -139,10 +139,16 @@ export const StyledBookDetails = styled.div`
         box-shadow: 0px 30px 30px rgba(0, 0, 0, 0.15);
         padding: 18px 18px 20px 18px;
         justify-content: space-between;
+        gap: 10px;
         border: none;
+    }
+    .cta__button__mobile {
         width: calc(100% - 60px);
         position: fixed;
         bottom: 20px;
+    }
+    .cta__button__desktop {
+        display: none;
     }
     .button__details {
         display: flex;
@@ -150,7 +156,7 @@ export const StyledBookDetails = styled.div`
     }
     .button__text {
         padding-left: 23px;
-        text-align: justify;
+        text-align: left;
     }
     .addToCart__text {
         font-weight: bold;
@@ -170,5 +176,63 @@ export const StyledBookDetails = styled.div`
         line-height: 32px;
         letter-spacing: -1px;
         color: #ffffff;
+    }
+
+    @media screen and (min-width: 720px) {
+        .book__desktop__wrapper {
+            display: grid;
+            grid-template-columns: 243px auto;
+            grid-gap: 30px;
+        }
+        .book__details__content {
+            max-width: 837px;
+        }
+
+        .book__image {
+            max-width: unset;
+            height: 364.5px;
+        }
+        .book__image img {
+            height: 100%;
+            width: 100%;
+            margin-bottom: 70px;
+        }
+        .book__details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .cta__button__mobile {
+            display: none;
+        }
+        .cta__button__desktop {
+            display: block;
+            .book__price {
+                color: #000000;
+                margin-bottom: 18px;
+                font-size: 36px;
+            }
+            .available__text {
+                margin-bottom: 6px;
+                font-size: 14px;
+            }
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+            .addToCart__text {
+                text-align: center;
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 21px;
+                color: #ffffff;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1020px) {
+        .book__desktop__wrapper {
+            grid-gap: 100px;
+        }
     }
 `;
