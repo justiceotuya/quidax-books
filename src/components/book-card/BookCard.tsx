@@ -42,13 +42,13 @@ export const BookCard = (props: Props) => {
     };
 
     const handleRenderGenre = () => {
-        const authorNames = genres.map((item) => item.name);
-        return authorNames.join(', ');
+        const genreNames = genres.map((item) => item.name);
+        return genreNames.join(', ');
     };
 
     const handleParseYear = () => new Date(release_date).getFullYear();
     return (
-        <StyledBookCard>
+        <StyledBookCard to={`/books/${id}`}>
             <div className="book__image">
                 <img src={image_url} alt="book cover" />
             </div>

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-
-export const StyledBookCard = styled.div`
+import { Link } from 'react-router-dom';
+export const StyledBookCard = styled(Link)`
     display: flex;
     align-items: center;
     cursor: pointer;
     transition: box-shadow 0.2s ease-in-out;
+    text-decoration: none;
     :hover {
         background: #ffffff;
         box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.15);
