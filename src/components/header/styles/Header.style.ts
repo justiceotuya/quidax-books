@@ -8,6 +8,8 @@ export const StyledHeader = styled.header`
     background: #ffffff;
     border: 1px solid #eeeeee;
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
 
     .logo__container {
     }

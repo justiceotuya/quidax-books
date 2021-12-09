@@ -12,6 +12,11 @@ export const StyledBookCard = styled.div`
     .book__image {
         margin-right: 13px;
         height: 100%;
+        img {
+            height: 100%;
+            width: 110px;
+            object-fit: cover;
+        }
     }
     .book__details {
     }
@@ -39,6 +44,8 @@ export const StyledBookCard = styled.div`
     .book__performance {
         display: flex;
         margin-bottom: 19px;
+        max-width: 198px;
+        align-items: center;
     }
     .book__people {
         display: flex;
@@ -58,6 +65,11 @@ export const StyledBookCard = styled.div`
         color: #000000;
     }
     .divider {
+        height: 36px;
+        width: 1px;
+        background: #eeeeee;
+        border: none;
+        margin: 0 10px;
     }
     .book__ratings {
         font-size: 12px;
@@ -65,6 +77,7 @@ export const StyledBookCard = styled.div`
         color: #000000;
     }
     .rating__number {
+        margin-bottom: 1.5px;
     }
     .book__availability__container {
         display: flex;
@@ -78,6 +91,9 @@ export const StyledBookCard = styled.div`
     }
     .book__availability {
         color: #65c100;
+    }
+    .no_copies {
+        color: #c12300;
     }
     .addToCart__button {
         border: none;

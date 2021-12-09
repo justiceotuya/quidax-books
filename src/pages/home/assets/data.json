@@ -1,0 +1,579 @@
+[
+    {
+        "id": "11",
+        "title": "The Innovator's Dilemma",
+        "publisher": "Harvard Business School Press",
+        "genres": [
+            {
+                "name": "Non-fiction",
+                "id": "5"
+            },
+            {
+                "name": "Business",
+                "id": "7"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611770304/feec/the-innovators-dilemma_ap1zo4.jpg",
+        "price": 15.87,
+        "currency": "USD",
+        "rating": 4.5,
+        "authors": [
+            {
+                "name": "Clayton M. Christensen",
+                "id": "12"
+            }
+        ],
+        "available_copies": 15,
+        "featured": null,
+        "likes": 8,
+        "release_date": "1997-01-01T11:00:00.000Z",
+        "number_of_purchases": 11
+    },
+    {
+        "id": "5",
+        "title": " The Effective Engineer",
+        "publisher": "Effective Bookshelf",
+        "genres": [
+            {
+                "name": "Non-fiction",
+                "id": "5"
+            },
+            {
+                "name": " Computer Science",
+                "id": "6"
+            },
+            {
+                "name": "Business",
+                "id": "7"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611741483/feec/the-effective-engineer-cover_bgj7u4.jpg",
+        "price": 29.35,
+        "currency": "USD",
+        "rating": 4.4,
+        "authors": [
+            {
+                "name": "Edmond Lau",
+                "id": "6"
+            }
+        ],
+        "available_copies": 0,
+        "featured": true,
+        "likes": 63,
+        "release_date": "2015-03-18T23:00:00.000Z",
+        "number_of_purchases": 84
+    },
+    {
+        "id": "14",
+        "title": "Obsidian",
+        "publisher": "Hodder & Stoughton",
+        "genres": [
+            {
+                "name": "Romance novel",
+                "id": "9"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611824216/feec/obsidian_nojlw9.jpg",
+        "price": 5.99,
+        "currency": "USD",
+        "rating": 4.5,
+        "authors": [
+            {
+                "name": "Jennifer L. Armentrout",
+                "id": "17"
+            }
+        ],
+        "available_copies": 15,
+        "featured": null,
+        "likes": 20,
+        "release_date": "2014-06-26T11:00:00.000Z",
+        "number_of_purchases": 29
+    },
+    {
+        "id": "9",
+        "title": "How To Win Friends and Influence People",
+        "publisher": "HarperTorch",
+        "genres": [
+            {
+                "name": "Self Help",
+                "id": "4"
+            },
+            {
+                "name": "Non-fiction",
+                "id": "5"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611769892/feec/how-to-win-friends_t1a2jn.webp",
+        "price": 13.99,
+        "currency": "USD",
+        "rating": 4.7,
+        "authors": [
+            {
+                "name": "Dale Carnegie",
+                "id": "10"
+            }
+        ],
+        "available_copies": 50,
+        "featured": null,
+        "likes": 30,
+        "release_date": "2014-01-27T23:00:00.000Z",
+        "number_of_purchases": 36
+    },
+    {
+        "id": "12",
+        "title": "Blue Ocean Strategy",
+        "publisher": "Harvard Business School Press",
+        "genres": [
+            {
+                "name": "Non-fiction",
+                "id": "5"
+            },
+            {
+                "name": "Business",
+                "id": "7"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611770914/feec/blue-ocean-strategy_amjdl6.jpg",
+        "price": 15.56,
+        "currency": "USD",
+        "rating": 4.6,
+        "authors": [
+            {
+                "name": "W. Chan Kim",
+                "id": "13"
+            },
+            {
+                "name": "Renée A. Mauborgne ",
+                "id": "14"
+            }
+        ],
+        "available_copies": 2,
+        "featured": null,
+        "likes": 16,
+        "release_date": "2005-01-01T11:00:00.000Z",
+        "number_of_purchases": 22
+    },
+    {
+        "id": "13",
+        "title": "The Four Agreements",
+        "publisher": "Amber-Allen Publishing",
+        "genres": [
+            {
+                "name": "Self Help",
+                "id": "4"
+            },
+            {
+                "name": "Non-fiction",
+                "id": "5"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611823358/feec/the-four-agreements_gtp2bw.jpg",
+        "price": 5.94,
+        "currency": "USD",
+        "rating": 4.7,
+        "authors": [
+            {
+                "name": "Don Miguel Ruiz",
+                "id": "15"
+            },
+            {
+                "name": "Janet Mills",
+                "id": "16"
+            }
+        ],
+        "available_copies": 0,
+        "featured": null,
+        "likes": 35,
+        "release_date": "2010-01-18T11:00:00.000Z",
+        "number_of_purchases": 41
+    },
+    {
+        "id": "16",
+        "title": "The Signature of All Things",
+        "publisher": "Riverhead Books",
+        "genres": [],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611824923/feec/signature-of-all-things_ogxgi7.jpg",
+        "price": 13.99,
+        "currency": "USD",
+        "rating": 4.3,
+        "authors": [
+            {
+                "name": "Elizabeth Gilbert",
+                "id": "2"
+            }
+        ],
+        "available_copies": 17,
+        "featured": null,
+        "likes": 31,
+        "release_date": "2013-10-01T11:00:00.000Z",
+        "number_of_purchases": 52
+    },
+    {
+        "id": "21",
+        "title": "What You Do Is Who You Are",
+        "publisher": "HarperAudio",
+        "genres": [
+            {
+                "name": "Self Help",
+                "id": "4"
+            },
+            {
+                "name": "Non-fiction",
+                "id": "5"
+            },
+            {
+                "name": "Business",
+                "id": "7"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611826351/feec/what-you-do_rerozi.jpg",
+        "price": 15.99,
+        "currency": "USD",
+        "rating": 4.6,
+        "authors": [
+            {
+                "name": "Ben Horowitz",
+                "id": "11"
+            }
+        ],
+        "available_copies": 0,
+        "featured": null,
+        "likes": 45,
+        "release_date": "2019-10-29T11:00:00.000Z",
+        "number_of_purchases": 60
+    },
+    {
+        "id": "3",
+        "title": "Built to Last",
+        "publisher": "HarperCollins",
+        "genres": [
+            {
+                "name": "Non-fiction",
+                "id": "5"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611740637/feec/built-to-last-cover_cb92oa.jpg",
+        "price": 14.99,
+        "currency": "USD",
+        "rating": 4.6,
+        "authors": [
+            {
+                "name": "Jim Collins",
+                "id": "3"
+            },
+            {
+                "name": "Jerry I. Porras",
+                "id": "4"
+            }
+        ],
+        "available_copies": 26,
+        "featured": true,
+        "likes": 8,
+        "release_date": "2002-08-20T11:00:00.000Z",
+        "number_of_purchases": 10
+    },
+    {
+        "id": "6",
+        "title": "Becoming",
+        "publisher": "Crown Publishing Group",
+        "genres": [
+            {
+                "name": "Memoir",
+                "id": "1"
+            },
+            {
+                "name": "Autobiography",
+                "id": "2"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611741957/feec/becoming-cover_suqk9r.jpg",
+        "price": 14.99,
+        "currency": "USD",
+        "rating": 4.8,
+        "authors": [
+            {
+                "name": "Michelle Obama",
+                "id": "7"
+            }
+        ],
+        "available_copies": 13,
+        "featured": true,
+        "likes": 84,
+        "release_date": "2018-11-12T23:00:00.000Z",
+        "number_of_purchases": 93
+    },
+    {
+        "id": "2",
+        "title": "Effective Python",
+        "publisher": "Pearson Education",
+        "genres": [
+            {
+                "name": " Computer Science",
+                "id": "6"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611654245/feec/effective-python-cover_s7dahh.jpg",
+        "price": 47.49,
+        "currency": "USD",
+        "rating": 4.7,
+        "authors": [
+            {
+                "name": "Brett Slatkin",
+                "id": "1"
+            }
+        ],
+        "available_copies": 10,
+        "featured": true,
+        "likes": 15,
+        "release_date": "2015-02-12T11:00:00.000Z",
+        "number_of_purchases": 19
+    },
+    {
+        "id": "8",
+        "title": "My Sister, the Serial Killer",
+        "publisher": "Atlantic Books",
+        "genres": [],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611769880/feec/my-sister-serial-killer_asapyi.jpg",
+        "price": 11.99,
+        "currency": "USD",
+        "rating": 4.2,
+        "authors": [
+            {
+                "name": "Oyinkan Braithwaite",
+                "id": "9"
+            }
+        ],
+        "available_copies": 5,
+        "featured": null,
+        "likes": 37,
+        "release_date": "2019-01-03T11:00:00.000Z",
+        "number_of_purchases": 69
+    },
+    {
+        "id": "1",
+        "title": "Big Magic",
+        "publisher": "Bloomsbury Publishing",
+        "genres": [
+            {
+                "name": "Memoir",
+                "id": "1"
+            },
+            {
+                "name": "Self Help",
+                "id": "4"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611739811/feec/big-magic-cover_euc3rh.jpg",
+        "price": 12.99,
+        "currency": "USD",
+        "rating": 4.6,
+        "authors": [
+            {
+                "name": "Elizabeth Gilbert",
+                "id": "2"
+            }
+        ],
+        "available_copies": 5,
+        "featured": true,
+        "likes": 53,
+        "release_date": "2015-09-22T11:00:00.000Z",
+        "number_of_purchases": 69
+    },
+    {
+        "id": "20",
+        "title": "La voz del conocimiento",
+        "publisher": "Amber-Allen Publishing; Bilingual edition",
+        "genres": [
+            {
+                "name": "Self Help",
+                "id": "4"
+            },
+            {
+                "name": "Non-fiction",
+                "id": "5"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611826136/feec/la-voz-del-conocimiento_j5mkty.jpg",
+        "price": 7.99,
+        "currency": "USD",
+        "rating": 4.8,
+        "authors": [
+            {
+                "name": "Don Miguel Ruiz",
+                "id": "15"
+            },
+            {
+                "name": "Janet Mills",
+                "id": "16"
+            }
+        ],
+        "available_copies": 35,
+        "featured": null,
+        "likes": 15,
+        "release_date": "2005-03-10T11:00:00.000Z",
+        "number_of_purchases": 17
+    },
+    {
+        "id": "10",
+        "title": "The Hard Thing About Hard Things",
+        "publisher": "Harper Business",
+        "genres": [
+            {
+                "name": "Biography",
+                "id": "3"
+            },
+            {
+                "name": "Self Help",
+                "id": "4"
+            },
+            {
+                "name": "Non-fiction",
+                "id": "5"
+            },
+            {
+                "name": "Business",
+                "id": "7"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611770367/feec/hard-things-about-hard-things_g0frrg.jpg",
+        "price": 10.49,
+        "currency": "USD",
+        "rating": 4.7,
+        "authors": [
+            {
+                "name": "Ben Horowitz",
+                "id": "11"
+            }
+        ],
+        "available_copies": 9,
+        "featured": true,
+        "likes": 21,
+        "release_date": "2014-03-03T23:00:00.000Z",
+        "number_of_purchases": 27
+    },
+    {
+        "id": "4",
+        "title": " The Lean Startup",
+        "publisher": "Crown Publishing Group",
+        "genres": [
+            {
+                "name": "Business",
+                "id": "7"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611741004/feec/the-lean-startup-cover_dmwrjj.jpg",
+        "price": 9.99,
+        "currency": "USD",
+        "rating": 4.6,
+        "authors": [
+            {
+                "name": "Eric Reis",
+                "id": "5"
+            }
+        ],
+        "available_copies": 12,
+        "featured": true,
+        "likes": 52,
+        "release_date": "2010-12-31T23:00:00.000Z",
+        "number_of_purchases": 71
+    },
+    {
+        "id": "19",
+        "title": "Fifth Avenue Style",
+        "publisher": "Vendome Press; Illustrated edition",
+        "genres": [
+            {
+                "name": "Non-fiction",
+                "id": "5"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611825581/feec/fifth-avenue-style_wknvht.jpg",
+        "price": 60.54,
+        "currency": "USD",
+        "rating": 4.4,
+        "authors": [
+            {
+                "name": "Howard Slatkin",
+                "id": "18"
+            }
+        ],
+        "available_copies": 67,
+        "featured": null,
+        "likes": 75,
+        "release_date": "2013-10-15T11:00:00.000Z",
+        "number_of_purchases": 98
+    },
+    {
+        "id": "15",
+        "title": "From Blood and Ash",
+        "publisher": "Blue Box Press",
+        "genres": [
+            {
+                "name": "Romance novel",
+                "id": "9"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611824669/feec/from-blood-and-ash_hs4leq.jpg",
+        "price": 5.99,
+        "currency": "USD",
+        "rating": 4.7,
+        "authors": [
+            {
+                "name": "Jennifer L. Armentrout",
+                "id": "17"
+            }
+        ],
+        "available_copies": 4,
+        "featured": null,
+        "likes": 7,
+        "release_date": "2020-03-29T11:00:00.000Z",
+        "number_of_purchases": 9
+    },
+    {
+        "id": "17",
+        "title": "The Startup Way",
+        "publisher": "Currency",
+        "genres": [
+            {
+                "name": "Business",
+                "id": "7"
+            }
+        ],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611825120/feec/the-startup-way_znfqbe.jpg",
+        "price": 4.99,
+        "currency": "USD",
+        "rating": 4.4,
+        "authors": [
+            {
+                "name": "Eric Reis",
+                "id": "5"
+            }
+        ],
+        "available_copies": 8,
+        "featured": null,
+        "likes": 0,
+        "release_date": "2017-10-17T11:00:00.000Z",
+        "number_of_purchases": 2
+    },
+    {
+        "id": "18",
+        "title": "Treasure",
+        "publisher": "Amazon Original Stories",
+        "genres": [],
+        "image_url": "https://res.cloudinary.com/quidaxengineering/image/upload/v1611825288/feec/treasure_lccloa.jpg",
+        "price": 1.99,
+        "currency": "USD",
+        "rating": 3.7,
+        "authors": [
+            {
+                "name": "Oyinkan Braithwaite",
+                "id": "9"
+            }
+        ],
+        "available_copies": 3,
+        "featured": null,
+        "likes": 7,
+        "release_date": "2020-07-30T11:00:00.000Z",
+        "number_of_purchases": 20
+    }
+]
