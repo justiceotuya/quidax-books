@@ -170,6 +170,9 @@ export const StyledBookDetails = styled.div`
         line-height: 15px;
         color: #65c100;
     }
+    .no_copies {
+        color: #c12300;
+    }
     .book__price {
         font-weight: 300;
         font-size: 28px;
@@ -227,6 +230,9 @@ export const StyledBookDetails = styled.div`
                 line-height: 21px;
                 color: #ffffff;
             }
+        }
+        .description__container {
+            margin-bottom: 0;
         }
     }
 

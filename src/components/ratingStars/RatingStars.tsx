@@ -8,7 +8,7 @@ export const RatingStars = (props: Props) => {
     return (
         <StyledRatingStars>
             {Array.from(new Array(5)).map((item, index) => (
-                <StyledStarIcon key={item} rating={Math.round(rating)} position={index} />
+                <StyledStarIcon key={index} rating={Math.round(rating)} position={index} />
             ))}
         </StyledRatingStars>
     );

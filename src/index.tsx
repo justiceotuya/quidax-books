@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
+import { getBooksList } from './services/queries/getBooksList';
+
+export const client = new ApolloClient({
+    uri: 'https://quidax-feec-graphql.herokuapp.com/graphql',
+    cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router>
-            <App />
-        </Router>
+        <ApolloProvider client={client}>
+            <Router>
+                <App />
+            </Router>
+        </ApolloProvider>
     </React.StrictMode>,
     document.getElementById('root'),
 );

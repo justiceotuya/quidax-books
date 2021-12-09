@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledHeaderMobileSearch = styled.div<{ isMobileSearchOpen: boolean }>`
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(0, 0, 0, 0.2);
     z-index: ${(props) => (props.isMobileSearchOpen ? '2' : '-1')};
     height: ${(props) => (props.isMobileSearchOpen ? '100%' : '0')};
     transition: ${(props) => (props.isMobileSearchOpen ? 'z-index 0.01s ease-in;' : 'z-index 0.2s ease-in 0.2s;')};

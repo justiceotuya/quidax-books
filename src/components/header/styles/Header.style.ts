@@ -33,6 +33,7 @@ export const StyledHeader = styled.header`
         display: grid;
         place-items: center;
         position: relative;
+        cursor: pointer;
     }
     .cart__numbers {
         font-weight: bold;

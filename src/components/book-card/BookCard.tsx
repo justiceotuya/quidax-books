@@ -5,6 +5,7 @@ import { ReactComponent as HeartIcon } from './assets/heart.svg';
 import { ReactComponent as PeopleIcon } from './assets/people.svg';
 import BookCover from './assets/book-cover.png';
 import { RatingStars } from '..';
+
 interface Props {
     id: string;
     title: string;

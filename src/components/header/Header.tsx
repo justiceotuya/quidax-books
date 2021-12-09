@@ -8,9 +8,14 @@ import { ReactComponent as CartIcon } from './assets/cart.svg';
 import { ReactComponent as SearchIcon } from './assets/search.svg';
 import { HeaderMobileSearch } from './HeaderMobileSearch';
 import { SearchInput } from './SearchInput';
-interface Props {}
+interface Props {
+    isCartOpen: boolean;
+    handleToggleCart: () => void;
+}
 
 export const Header = (props: Props) => {
+    const { handleToggleCart } = props;
+
     const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
     const handleToggleMobileSearch = () => {
@@ -42,7 +47,7 @@ export const Header = (props: Props) => {
                 <button className="action__button books__index">
                     <BooksIcon />
                 </button>
-                <button className="action__button">
+                <button className="action__button" onClick={handleToggleCart}>
                     <CartIcon />
                     <p className="cart__numbers">3</p>
                 </button>
