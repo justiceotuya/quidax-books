@@ -10,16 +10,6 @@ import { getBooksList } from './services/queries/getBooksList';
 import { saveBookList } from './redux';
 
 function App() {
-    const { dispatch } = useBookListContext();
-    const { loading, error, data } = useQuery(getBooksList);
-
-    //add data to redux store
-    useEffect(() => {
-        if (data) {
-            dispatch(saveBookList(data.books));
-        }
-    }, [data]);
-
     return (
         <Layout>
             <Routes>

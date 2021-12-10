@@ -9,7 +9,7 @@ import { ReactComponent as CartIcon } from './assets/cart.svg';
 import { RatingStars } from '../../components';
 import { Link } from 'react-router-dom';
 
-import { useQuery } from '@apollo/client';
+import { useLazyQuery, useQuery } from '@apollo/client';
 import { Book } from '../../types';
 import { getBookDetail } from '../../services/queries/getBookDetails';
 import {
@@ -18,8 +18,10 @@ import {
     toggleCartDisplay,
     subtractQuantityFromBookItem,
     getCurrentActiveBook,
+    saveBookList,
 } from '../../redux';
 import { useBookListContext } from '../../redux/slice';
+import { getBooksList } from '../../services/queries/getBooksList';
 interface Props {}
 
 const months = [
@@ -49,31 +51,35 @@ export const BookDetails = (props: Props) => {
         state: { currentBook, bookList },
     } = useBookListContext();
 
-    console.log({ currentBook });
+    const [fetchData, { loading, error, data }] = useLazyQuery(getBooksList);
 
-    const [bookDetails, setBookDetails] = useState({} as Book);
-
+    //fetch data on load
     useEffect(() => {
-        if (currentBook) {
-            setBookDetails(currentBook);
-        }
-    }, [currentBook]);
+        // fetch whole book data so that current book can be populated, this only runs if there is no book data or when user directly access the page from the link instead of from the home page
+        const handleFetchWholeBookDataIfBookDataIsNotPresent = () => {
+            if (bookList.length === 0) {
+                !data ? fetchData() : dispatch(saveBookList(data.books));
+            }
+        };
+
+        handleFetchWholeBookDataIfBookDataIsNotPresent();
+    }, [data, bookList]);
 
     useEffect(() => {
         dispatch(getCurrentActiveBook({ id: bookId }));
     }, [bookList]);
 
     const handleRenderAuthors = () => {
-        const authorNames = (bookDetails && bookDetails?.authors?.map((item) => item.name)) || [];
+        const authorNames = (currentBook && currentBook?.authors?.map((item) => item.name)) || [];
         return authorNames.join(', ');
     };
 
     const handleRenderGenre = () => {
-        const genreNames = (bookDetails && bookDetails?.genres?.map((item) => item.name)) || [];
+        const genreNames = (currentBook && currentBook?.genres?.map((item) => item.name)) || [];
         return genreNames.join(', ');
     };
     const handleRenderTags = () => {
-        const tagNames = (bookDetails && bookDetails?.tags?.map((item) => item.name)) || [];
+        const tagNames = (currentBook && currentBook?.tags?.map((item) => item.name)) || [];
         return tagNames.join(', ');
     };
 
@@ -87,12 +93,12 @@ export const BookDetails = (props: Props) => {
     const handleAddItemToCart = (event: any) => {
         event.preventDefault();
         event.stopPropagation();
-        dispatch(addItemToCart(bookDetails));
-        dispatch(subtractQuantityFromBookItem(bookDetails));
+        dispatch(addItemToCart(currentBook));
+        dispatch(subtractQuantityFromBookItem(currentBook));
         dispatch(getCurrentActiveBook({ id: bookId }));
     };
 
-    const handleParseYear = () => new Date(bookDetails.release_date).getFullYear();
+    const handleParseYear = () => new Date(currentBook.release_date).getFullYear();
     return (
         <StyledBookDetails>
             <Link to="/" className="back__button">
@@ -100,29 +106,30 @@ export const BookDetails = (props: Props) => {
                 <span className="button__text">Back</span>
             </Link>
             {/* TODO: skeleton screen for loading */}
-            {bookDetails && (
+            {loading && <p>Loading...</p>}
+            {Object.keys(currentBook).length > 0 && (
                 <>
                     <div className="book__desktop__wrapper">
                         <div className="book__image">
-                            <img src={bookDetails.image_url} alt={bookDetails.title} />
+                            <img src={currentBook.image_url} alt={currentBook.title} />
 
                             <div className="cta__button__desktop">
                                 {/* <p className="available__text">23 Copies Available</p> */}
-                                {bookDetails.available_copies > 0 ? (
-                                    <p className="available__text">{bookDetails.available_copies} Copies Available</p>
+                                {currentBook.available_copies > 0 ? (
+                                    <p className="available__text">{currentBook.available_copies} Copies Available</p>
                                 ) : (
                                     <p className="available__text no_copies">Out of stock</p>
                                 )}
                                 <p className="book__price">
-                                    {bookDetails?.currency &&
+                                    {currentBook?.currency &&
                                         new Intl.NumberFormat('en-US', {
                                             style: 'currency',
-                                            currency: bookDetails['currency'],
-                                        }).format(bookDetails.price)}
+                                            currency: currentBook['currency'],
+                                        }).format(currentBook.price)}
                                 </p>
                             </div>
 
-                            {bookDetails.available_copies > 0 && (
+                            {currentBook.available_copies > 0 && (
                                 <button className="cta__button cta__button__desktop" onClick={handleAddItemToCart}>
                                     <div className="button__details">
                                         <CartIcon />
@@ -135,7 +142,7 @@ export const BookDetails = (props: Props) => {
                         </div>
 
                         <div className="book__details__content">
-                            <h1 className="book__title">{bookDetails.title}</h1>
+                            <h1 className="book__title">{currentBook.title}</h1>
                             <div className="book__author">
                                 <p className="author__name">{handleRenderAuthors()}</p>
                                 <p className="book__year">{handleParseYear()}</p>
@@ -147,11 +154,11 @@ export const BookDetails = (props: Props) => {
                                         <div className="book__people">
                                             <div className="book__readers">
                                                 <PeopleIcon />
-                                                <p className="readers__count">{bookDetails.number_of_purchases}</p>
+                                                <p className="readers__count">{currentBook.number_of_purchases}</p>
                                             </div>
                                             <div className="book__readers">
                                                 <HeartIcon />
-                                                <p className="readers__count">{bookDetails.likes}</p>
+                                                <p className="readers__count">{currentBook.likes}</p>
                                             </div>
                                         </div>
 
@@ -159,9 +166,9 @@ export const BookDetails = (props: Props) => {
 
                                         <div className="book__ratings">
                                             <p className="rating__number">
-                                                <strong>Ratings</strong>: {bookDetails.rating}
+                                                <strong>Ratings</strong>: {currentBook.rating}
                                             </p>
-                                            <RatingStars rating={bookDetails.rating} />
+                                            <RatingStars rating={currentBook.rating} />
                                         </div>
                                     </div>
 
@@ -175,28 +182,28 @@ export const BookDetails = (props: Props) => {
                                     </div>
                                     <div className="book__publisher">
                                         <p className="book__details__title">publisher</p>
-                                        <p className="book__details__text">{bookDetails.publisher}</p>
+                                        <p className="book__details__text">{currentBook.publisher}</p>
                                     </div>
                                     <div className="book__released">
                                         <p className="book__details__title">released</p>
-                                        <p className="book__details__text">{getFullDate(bookDetails.release_date)}</p>
+                                        <p className="book__details__text">{getFullDate(currentBook.release_date)}</p>
                                     </div>
                                 </div>
                             </div>
                             <div className="description__container">
-                                <p className="description">{bookDetails.full_description}</p>
+                                <p className="description">{currentBook.full_description}</p>
                             </div>
                         </div>
                     </div>
-                    {bookDetails.available_copies > 0 && (
+                    {currentBook.available_copies > 0 && (
                         <button className="cta__button cta__button__mobile" onClick={handleAddItemToCart}>
                             <div className="button__details">
                                 <CartIcon />
                                 <div className="button__text">
                                     <p className="addToCart__text">Add to Cart</p>
-                                    {bookDetails.available_copies > 0 ? (
+                                    {currentBook.available_copies > 0 ? (
                                         <p className="available__text">
-                                            {bookDetails.available_copies} Copies Available
+                                            {currentBook.available_copies} Copies Available
                                         </p>
                                     ) : (
                                         <p className="available__text no_copies">Out of stock</p>
@@ -207,8 +214,8 @@ export const BookDetails = (props: Props) => {
                             <p className="book__price">
                                 {new Intl.NumberFormat('en-US', {
                                     style: 'currency',
-                                    currency: bookDetails['currency'],
-                                }).format(bookDetails.price)}
+                                    currency: currentBook['currency'],
+                                }).format(currentBook.price)}
                             </p>
                         </button>
                     )}

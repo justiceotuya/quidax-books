@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BookCard, Layout } from '../../components';
 import { StyledHome } from './Home.style';
 import data from './assets/data.json';
-import { useQuery } from '@apollo/client';
+import { useLazyQuery, useQuery } from '@apollo/client';
 import { getBooksList } from '../../services/queries/getBooksList';
 import { Book } from '../../types';
 import { useBookListContext } from '../../redux/slice';
@@ -18,14 +18,24 @@ export const Home = (props: Props) => {
         state: { bookList },
         dispatch,
     } = useBookListContext();
+    const [fetchData, { loading, error, data }] = useLazyQuery(getBooksList);
+
+    //fetch data on load
+    useEffect(() => {
+        //we are using redux data, if redux data is empty, fetch data from
+        //server and populate the reddux store
+        if (bookList.length === 0) {
+            !data ? fetchData() : dispatch(saveBookList(data.books));
+        }
+    }, [data, bookList]);
 
     return (
         <StyledHome>
             <div className="booksList__container">
                 <p className="booksList__title">All Books</p>
                 <div className="booksList__content">
-                    {/* {loading && <p>Loading .... </p>} */}
-                    {data &&
+                    {loading && <p>Loading .... </p>}
+                    {bookList &&
                         bookList.map((item) => {
                             return <BookCard key={item.id} {...item} />;
                         })}
