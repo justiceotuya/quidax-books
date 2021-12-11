@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 export const StyledBookCard = styled(Link)`
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     cursor: pointer;
     transition: box-shadow 0.2s ease-in-out;
     text-decoration: none;
@@ -11,7 +11,7 @@ export const StyledBookCard = styled(Link)`
         box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.15);
     }
     .book__image {
-        margin-right: 13px;
+        /* margin-right: 13px; */
         height: 100%;
         img {
             height: 100%;
@@ -20,6 +20,7 @@ export const StyledBookCard = styled(Link)`
         }
     }
     .book__details {
+        padding: 13px;
     }
     .book__title {
         font-weight: bold;

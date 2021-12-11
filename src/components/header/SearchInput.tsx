@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { updateSearchText, useSearchContext } from '../../redux';
+
 import { ReactComponent as CloseIcon } from './assets/close-icon.svg';
 import { ReactComponent as SearchIcon } from './assets/search.svg';
 import { StyledSearchInput } from './styles/SearchInput.style';
 interface Props {}
 
 export const SearchInput = (props: Props) => {
-    const [searchText, setSearchText] = useState('');
+    const navigate = useNavigate();
+    const {
+        dispatch,
+        state: { searchText },
+    } = useSearchContext();
+    const [searchInputText, setSearchInputText] = useState('');
 
     const handleClickInputButton = () => {
         //reset the input
-        if (searchText !== '') {
-            setSearchText('');
-        } else {
-            alert(`searching ${searchText}`);
+        if (searchInputText !== '') {
+            setSearchInputText('');
+            dispatch(updateSearchText(''));
         }
     };
 
-    const handleChangeSearchText = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchText(e.target.value);
+    const handleChangeSearchInputText = (e: React.ChangeEvent<HTMLInputElement>) => {
+        navigate('/books/search');
+        setSearchInputText(e.target.value);
+        dispatch(updateSearchText(e.target.value));
     };
     return (
         <StyledSearchInput>
@@ -25,12 +34,12 @@ export const SearchInput = (props: Props) => {
                 <input
                     type="text"
                     className="search__box"
-                    value={searchText}
-                    onChange={handleChangeSearchText}
+                    value={searchInputText}
+                    onChange={handleChangeSearchInputText}
                     placeholder="Search books, genres, authors, etc."
                 />
                 <button className="search__button" onClick={handleClickInputButton}>
-                    {searchText === '' ? <SearchIcon /> : <CloseIcon />}
+                    {searchInputText === '' ? <SearchIcon /> : <CloseIcon />}
                 </button>
             </div>
         </StyledSearchInput>

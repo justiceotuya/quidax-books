@@ -1,6 +1,6 @@
 import { useSearchContext, useCartContext } from './slice/';
 import { addItemToCart, toggleCartDisplay, dropItemFromCart, removeItemFromCart } from './slice/cartSlice';
-import { changeSearchText } from './slice/searchSlice';
+import { updateSearchText } from './slice/searchSlice';
 import {
     saveBookList,
     subtractQuantityFromBookItem,
@@ -15,7 +15,7 @@ export {
     useCartContext,
     addItemToCart,
     toggleCartDisplay,
-    changeSearchText,
+    updateSearchText,
     dropItemFromCart,
     removeItemFromCart,
     saveBookList,

@@ -1,13 +1,8 @@
-import React, { useEffect } from 'react';
-import { Home } from './pages';
+import React from 'react';
 import './reset.css';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components';
-import BookDetails from './pages/book-details';
-import { useBookListContext } from './redux/slice';
-import { useQuery } from '@apollo/client';
-import { getBooksList } from './services/queries/getBooksList';
-import { saveBookList } from './redux';
+import { Home, BookDetails, BookSearch } from './pages';
 
 function App() {
     return (
@@ -15,6 +10,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/books/:id" element={<BookDetails />} />
+                <Route path="/books/search" element={<BookSearch />} />
             </Routes>
         </Layout>
     );

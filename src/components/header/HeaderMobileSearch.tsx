@@ -13,7 +13,7 @@ export const HeaderMobileSearch = (props: Props) => {
     const [searchText, setSearchText] = useState('');
     const { isMobileSearchOpen, handleToggleMobileSearch } = props;
 
-    const handleChangeSearchText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleupdateSearchText = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchText(e.target.value);
     };
 

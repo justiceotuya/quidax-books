@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Book } from '../../types';
 // import { IStudyRequestProps } from '../types';
-interface IModifiedBook extends Book {
+export interface IModifiedBook extends Book {
     availableStoreBooks: number;
 }
 

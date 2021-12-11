@@ -14,7 +14,7 @@ export const StyledHome = styled.div`
     }
     .booksList__content {
         display: grid;
-        grid-auto-rows: 183px;
+        grid-auto-rows: fit-content;
         grid-template-columns: 1fr;
         grid-row-gap: 40px;
         grid-column-gap: 78px;
@@ -22,7 +22,7 @@ export const StyledHome = styled.div`
 
     @media screen and (min-width: 720px) {
         .booksList__content {
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
         }
     }
 `;

@@ -9,13 +9,13 @@ export const searchSlice = createSlice({
     name: 'search',
     initialState: initialState(),
     reducers: {
-        changeSearchText: (state, action) => {
+        updateSearchText: (state, action) => {
             state.searchText = action.payload;
         },
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { changeSearchText } = searchSlice.actions;
+export const { updateSearchText } = searchSlice.actions;
 
 export default searchSlice.reducer;

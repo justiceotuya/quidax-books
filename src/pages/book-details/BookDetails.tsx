@@ -53,6 +53,14 @@ export const BookDetails = (props: Props) => {
 
     const [fetchData, { loading, error, data }] = useLazyQuery(getBooksList);
 
+    const [bookData, setBookData] = useState({});
+
+    //on load hold a copy of the book data, this is what is to be sent to the redux
+    //store
+    useEffect(() => {
+        currentBook && setBookData(currentBook);
+    }, [currentBook]);
+
     //fetch data on load
     useEffect(() => {
         // fetch whole book data so that current book can be populated, this only runs if there is no book data or when user directly access the page from the link instead of from the home page
@@ -91,10 +99,8 @@ export const BookDetails = (props: Props) => {
     };
 
     const handleAddItemToCart = (event: any) => {
-        event.preventDefault();
-        event.stopPropagation();
-        dispatch(addItemToCart(currentBook));
-        dispatch(subtractQuantityFromBookItem(currentBook));
+        dispatch(addItemToCart({ ...bookData, available_copies: currentBook.availableStoreBooks }));
+        dispatch(subtractQuantityFromBookItem(bookData));
         dispatch(getCurrentActiveBook({ id: bookId }));
     };
 
