@@ -8,7 +8,7 @@ export const StyledLayout = styled.div`
         /* max-width: 1440px; */
         margin: 0 auto;
         height: calc(100vh - 72px);
-        padding: 30px;
+        /* padding: 30px; */
         overflow: auto;
     }
 

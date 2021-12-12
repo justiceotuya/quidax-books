@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledBookDetails = styled.div`
+    padding: 30px;
     .back__button {
         border: none;
         background: none;

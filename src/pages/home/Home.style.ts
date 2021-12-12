@@ -1,8 +1,20 @@
 import styled from 'styled-components';
 
 export const StyledHome = styled.div`
-    .booksList__container {
+    .carousel__container {
+        margin-top: 27px;
     }
+    .carousel__title {
+        max-width: calc(1400px - 80px);
+        margin: 0 auto;
+        /* padding: 0 40px; */
+    }
+    .booksList__container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px;
+    }
+    .carousel__title,
     .booksList__title {
         font-weight: bold;
         font-size: 14px;

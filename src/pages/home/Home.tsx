@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BookCard, Layout } from '../../components';
+import { BookCard, BooksCarousel, Layout } from '../../components';
 import { StyledHome } from './Home.style';
 import data from './assets/data.json';
 import { useLazyQuery, useQuery } from '@apollo/client';
@@ -31,16 +31,23 @@ export const Home = (props: Props) => {
 
     return (
         <StyledHome>
-            <div className="booksList__container">
-                <p className="booksList__title">All Books</p>
-                <div className="booksList__content">
-                    {loading && <p>Loading .... </p>}
-                    {bookList &&
-                        bookList.map((item) => {
-                            return <BookCard key={item.id} {...item} />;
-                        })}
-                </div>
-            </div>
+            {loading && <p>Loading .... </p>}
+            {bookList && !loading && (
+                <>
+                    <div className="carousel__container">
+                        <p className="carousel__title">Featured Books</p>
+                        <BooksCarousel data={bookList} />
+                    </div>
+                    <div className="booksList__container">
+                        <p className="booksList__title">All Books</p>
+                        <div className="booksList__content">
+                            {bookList.map((item) => {
+                                return <BookCard key={item.id} {...item} />;
+                            })}
+                        </div>
+                    </div>
+                </>
+            )}
         </StyledHome>
     );
 };
