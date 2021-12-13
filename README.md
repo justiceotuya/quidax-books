@@ -2,53 +2,38 @@
 
 This project is my submission for the assessment by Quidax.
 
+link to the finished work [https://quidax-books-theta.vercel.app ](https://quidax-books-theta.vercel.app)
+
 ## How to install and run the app
 
 -   Clone the app `git clone https://github.com/justiceotuya/quidax-books.git`
 -   Install the app by running `npm install`
 -   After the install, run the app by running `npm start`
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `Assumption Made`
-- screen with maximum is 1440px, because we need to clip the content so to a
-  maximum screen so it doesnt get
-- realtime search is not on live data from the api but on fetch data (local
-  search)i initially though that it was fitering donr directly with the graphql
-  server but on inspection of the schemas, the sorting does not support desired
-  realtime search as shown in the design
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   screen with maximum is 1440px, because we need to clip the content so to a
+    maximum screen so it doesnt get overstretched
+-   realtime search is not on live data from the api but on fetched data (local
+    search). i initially though that it was filtering done directly with the graphql
+    server but on inspection of the schemas, the sorting does not support desired
+    realtime search as shown in the design
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Issues
 
-### `yarn test`
+-   initially thinking the search manipulation is server side(use grapql to make
+    filter /search the data), the instruction was not clear enough.
+-   The Carousel component gave me some issues too
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Feedback
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   make it clear enough the search should be local since the schema does not
+    provide the search that is needed.
+-   the initial duration of 2 days in the assignment is too small, evn though
+    extension was asked and was given, what it does is it puts doubt into the mind
+    of the interviewee considering the fact that they may have some fulltime job
+    already. a duration of one week will soothe nerves, as asking for extension
+    might mean marks might be deducted
+-   make it clear that CSSinJS packages can be used in the test since CSS
+    libraries has been forbidden.

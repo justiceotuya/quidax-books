@@ -12,7 +12,6 @@ export const StyledBookCard = styled(Link)`
         box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.15);
     }
     .book__image {
-        /* margin-right: 13px; */
         height: 100%;
         width: 100%;
         img {

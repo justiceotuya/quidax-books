@@ -24,9 +24,9 @@ export const StyledImageContainerLink = styled(Link)<{ selected: number; positio
     height: 210px;
     width: 140px;
     background: #ffffff;
-    box-shadow: 0px 30px 30px rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0px 30px 30px rgba(0, 0, 0, 0.15); */
     position: relative;
-    transform: ${(props) => props.selected === props.position && 'scale(1.1)'};
+    /* transform: ${(props) => props.selected === props.position && 'scale(1.1)'}; */
     transition: transform 0.2s ease-in, box-shadow 0.2s ease-in;
     z-index: ${(props) => (props.selected === props.position ? '2' : '1')};
 
@@ -39,12 +39,14 @@ export const StyledImageContainerLink = styled(Link)<{ selected: number; positio
     img {
         height: 100%;
         width: 100%;
-        object-fit: cover;
+        box-shadow: 0px 30px 30px rgba(0, 0, 0, 0.15);
+
+        /* object-fit: cover; */
     }
 
     .book__details {
         position: absolute;
-        inset: 0;
+        inset: 0 20px 0 0;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.607988) 0%, #000000 79.7%);
         display: flex;
         justify-content: center;
@@ -135,29 +137,59 @@ export const StyledImageContainerLink = styled(Link)<{ selected: number; positio
     }
 
     @media screen and (min-width: 720px) {
-        margin-right: 20px;
+        /* margin-right: 20px; */
         width: 220px;
         height: 330px;
-        transform: ${(props) => props.selected === props.position && 'scale(1.1)'};
+        /* transform: ${(props) => props.selected === props.position && 'scale(1.1)'}; */
         box-shadow: ${(props) => props.selected === props.position && '0px 15px 15px rgba(0, 0, 0, 0.15)'};
     }
 `;
 
 export const StyledBooksCarousel = styled.div<{ arrayLength: number; selected: number }>`
-    height: 271px;
     overflow: hidden;
     position: relative;
+    height: 271px;
+    .tns-ovh {
+        height: 271px;
+    }
+    .tns-nav {
+        position: relative;
+        top: -50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+            background: #dddddd;
+            width: 8px;
+            height: 8px;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+            border-radius: 100%;
+            margin-right: 5px;
+            transition: background 0.3s ease-in;
+            :last-of-type {
+                margin-right: 0;
+            }
+        }
+        .tns-nav-active {
+            background: #64c000;
+            border: 1px solid #64c000;
+        }
+    }
     .imageSlider {
         margin-top: 20px;
         display: flex;
-        width: ${(props) => `${props.arrayLength * 145}px`};
-        transform: ${(props) =>
+        /* width: ${(props) => `${props.arrayLength * 145}px`}; */
+        /* transform: ${(props) =>
             `translateX(${
                 (props.selected - 1) * -145 + window.innerWidth - 145 > 0
                     ? 0
                     : props.selected * -145 + window.innerWidth - 145
-            }px)`};
-        transition: transform 0.2s ease-in;
+            }px)`}; */
+        /* transform: ${(props) => `translateX(${props.selected * -window.innerWidth + 145}px)`};
+        transition: transform 0.2s ease-in; */
     }
 
     .carousel__control {
@@ -194,14 +226,17 @@ export const StyledBooksCarousel = styled.div<{ arrayLength: number; selected: n
 
     @media screen and (min-width: 720px) {
         height: 405px;
+        .tns-ovh {
+            height: 405px;
+        }
         .imageSlider {
-            width: ${(props) => `${props.arrayLength * 220}px`};
-            transform: ${(props) =>
+            /* width: ${(props) => `${props.arrayLength * 220}px`}; */
+            /* transform: ${(props) =>
                 `translateX(${
                     (props.selected - 1) * -220 + window.innerWidth - 220 > 0
                         ? 0
                         : props.selected * -220 + (window.innerWidth - 220)
-                }px)`};
+                }px)`}; */
             margin-top: 20px;
         }
         .indicator__container {
