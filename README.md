@@ -1,12 +1,20 @@
-# Getting Started with Create React App
+# Quidax Books Assessment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is my submission for the assessment by Quidax.
 
-## Available Scripts
+## How to install and run the app
 
-In the project directory, you can run:
+-   Clone the app `git clone https://github.com/justiceotuya/quidax-books.git`
+-   Install the app by running `npm install`
+-   After the install, run the app by running `npm start`
 
-### `yarn start`
+### `Assumption Made`
+- screen with maximum is 1440px, because we need to clip the content so to a
+  maximum screen so it doesnt get
+- realtime search is not on live data from the api but on fetch data (local
+  search)i initially though that it was fitering donr directly with the graphql
+  server but on inspection of the schemas, the sorting does not support desired
+  realtime search as shown in the design
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

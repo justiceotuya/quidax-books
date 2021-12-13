@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 export const StyledBookCard = styled(Link)`
-    display: flex;
+    display: grid;
+    grid-template-columns: 110px 1fr;
     /* align-items: center; */
     cursor: pointer;
     transition: box-shadow 0.2s ease-in-out;
@@ -13,10 +14,10 @@ export const StyledBookCard = styled(Link)`
     .book__image {
         /* margin-right: 13px; */
         height: 100%;
+        width: 100%;
         img {
             height: 100%;
-            width: 110px;
-            object-fit: cover;
+            width: 100%;
         }
     }
     .book__details {

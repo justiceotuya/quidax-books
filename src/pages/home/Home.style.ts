@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const StyledHome = styled.div`
     .carousel__container {
+        max-width: 1440px;
+        margin: 0 auto;
         margin-top: 27px;
     }
     .carousel__title {

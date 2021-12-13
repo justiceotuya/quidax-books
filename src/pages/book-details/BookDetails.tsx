@@ -22,6 +22,14 @@ import {
 } from '../../redux';
 import { useBookListContext } from '../../redux/slice';
 import { getBooksList } from '../../services/queries/getBooksList';
+import {
+    handleParseYear,
+    handleRenderAuthors,
+    handleRenderGenre,
+    handleRenderTags,
+    handleFormatCurrency,
+} from '../../utils';
+
 interface Props {}
 
 const months = [
@@ -77,20 +85,6 @@ export const BookDetails = (props: Props) => {
         dispatch(getCurrentActiveBook({ id: bookId }));
     }, [bookList]);
 
-    const handleRenderAuthors = () => {
-        const authorNames = (currentBook && currentBook?.authors?.map((item) => item.name)) || [];
-        return authorNames.join(', ');
-    };
-
-    const handleRenderGenre = () => {
-        const genreNames = (currentBook && currentBook?.genres?.map((item) => item.name)) || [];
-        return genreNames.join(', ');
-    };
-    const handleRenderTags = () => {
-        const tagNames = (currentBook && currentBook?.tags?.map((item) => item.name)) || [];
-        return tagNames.join(', ');
-    };
-
     const getFullDate = (date: string) => {
         const day = new Date(date).getDay();
         const monthName = months[new Date(date).getMonth()];
@@ -99,12 +93,17 @@ export const BookDetails = (props: Props) => {
     };
 
     const handleAddItemToCart = (event: any) => {
+        //add item to cart
         dispatch(addItemToCart({ ...bookData, available_copies: currentBook.availableStoreBooks }));
+        //subtract item from the items list
         dispatch(subtractQuantityFromBookItem(bookData));
+        //get current active book, which refreshes the page and sync the changes
         dispatch(getCurrentActiveBook({ id: bookId }));
+        //open the cart
+        dispatch(toggleCartDisplay());
     };
 
-    const handleParseYear = () => new Date(currentBook.release_date).getFullYear();
+    // const handleParseYear = () => new Date(currentBook.release_date).getFullYear();
     return (
         <StyledBookDetails>
             <Link to="/" className="back__button">
@@ -127,11 +126,7 @@ export const BookDetails = (props: Props) => {
                                     <p className="available__text no_copies">Out of stock</p>
                                 )}
                                 <p className="book__price">
-                                    {currentBook?.currency &&
-                                        new Intl.NumberFormat('en-US', {
-                                            style: 'currency',
-                                            currency: currentBook['currency'],
-                                        }).format(currentBook.price)}
+                                    {handleFormatCurrency(currentBook['currency'], currentBook.price)}
                                 </p>
                             </div>
 
@@ -150,8 +145,8 @@ export const BookDetails = (props: Props) => {
                         <div className="book__details__content">
                             <h1 className="book__title">{currentBook.title}</h1>
                             <div className="book__author">
-                                <p className="author__name">{handleRenderAuthors()}</p>
-                                <p className="book__year">{handleParseYear()}</p>
+                                <p className="author__name">{handleRenderAuthors(currentBook.authors)}</p>
+                                <p className="book__year">{handleParseYear(currentBook.release_date)}</p>
                             </div>
 
                             <div className="book__details__container">
@@ -180,11 +175,11 @@ export const BookDetails = (props: Props) => {
 
                                     <div className="book__genre">
                                         <p className="book__details__title">Genre</p>
-                                        <p className="book__details__text">{handleRenderGenre()}</p>
+                                        <p className="book__details__text">{handleRenderGenre(currentBook.genres)}</p>
                                     </div>
                                     <div className="book__tags">
                                         <p className="book__details__title">tags</p>
-                                        <p className="book__details__text">{handleRenderTags()}</p>
+                                        <p className="book__details__text">{handleRenderTags(currentBook.tags)}</p>
                                     </div>
                                     <div className="book__publisher">
                                         <p className="book__details__title">publisher</p>
@@ -218,10 +213,7 @@ export const BookDetails = (props: Props) => {
                             </div>
 
                             <p className="book__price">
-                                {new Intl.NumberFormat('en-US', {
-                                    style: 'currency',
-                                    currency: currentBook['currency'],
-                                }).format(currentBook.price)}
+                                {handleFormatCurrency(currentBook['currency'], currentBook.price)}
                             </p>
                         </button>
                     )}

@@ -6,6 +6,7 @@ import { ReactComponent as EmptyIcon } from './assets/empty__cart.svg';
 import { CartItem } from './CartItem';
 import { toggleCartDisplay, useCartContext } from '../../redux';
 import { Link } from 'react-router-dom';
+import { handleFormatCurrency } from '../../utils';
 
 export const Cart = () => {
     const {
@@ -19,10 +20,12 @@ export const Cart = () => {
 
     const handleCalculateCartSubTotal = () => {
         const totalPrice = cart.reduce((a, b) => a + b.totalPrice, 0);
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-        }).format(totalPrice);
+        // return new Intl.NumberFormat('en-US', {
+        //     style: 'currency',
+        //     currency: 'USD',
+        // }).format(totalPrice);
+
+        return handleFormatCurrency('USD', totalPrice);
     };
 
     return (

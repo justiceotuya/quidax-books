@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledCart = styled.aside<{ isCartOpen: boolean }>`
-    /* background-color: #fff; */
     width: 100%;
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.2);
-    /* z-index: 2;
-    z-index: 4; */
     display: grid;
     grid-template-columns: auto 480px;
-    z-index: ${(props) => (props.isCartOpen ? '2' : '-1')};
+    z-index: ${(props) => (props.isCartOpen ? '20' : '-1')};
     height: ${(props) => (props.isCartOpen ? '100%' : '0')};
     transition: ${(props) =>
         props.isCartOpen ? 'z-index 0.01s ease-in;' : 'z-index 0.2s ease-in 0.2s, height .2s ease-in 4s'};

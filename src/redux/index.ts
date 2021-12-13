@@ -6,6 +6,7 @@ import {
     subtractQuantityFromBookItem,
     addQuantityToBookItem,
     getCurrentActiveBook,
+    restockCartItem,
 } from './slice/bookListSlice';
 import { store } from './store';
 
@@ -22,4 +23,5 @@ export {
     subtractQuantityFromBookItem,
     addQuantityToBookItem,
     getCurrentActiveBook,
+    restockCartItem,
 };

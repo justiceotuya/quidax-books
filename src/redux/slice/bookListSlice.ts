@@ -47,11 +47,27 @@ export const bookListSlice = createSlice({
                 }
             });
         },
+
+        restockCartItem: (state, action) => {
+            state.bookList = state.bookList.map((item) => {
+                if (item.id === action.payload.id) {
+                    item.available_copies = item.availableStoreBooks;
+                    return item;
+                } else {
+                    return item;
+                }
+            });
+        },
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { saveBookList, subtractQuantityFromBookItem, addQuantityToBookItem, getCurrentActiveBook } =
-    bookListSlice.actions;
+export const {
+    saveBookList,
+    subtractQuantityFromBookItem,
+    addQuantityToBookItem,
+    getCurrentActiveBook,
+    restockCartItem,
+} = bookListSlice.actions;
 
 export default bookListSlice.reducer;

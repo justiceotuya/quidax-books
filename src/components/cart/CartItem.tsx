@@ -7,10 +7,13 @@ import {
     addItemToCart,
     dropItemFromCart,
     removeItemFromCart,
+    restockCartItem,
     subtractQuantityFromBookItem,
     addQuantityToBookItem,
     getCurrentActiveBook,
 } from '../../redux';
+
+import { handleFormatCurrency, handleRenderAuthors } from '../../utils';
 
 export const CartItem = (props: ICartProps) => {
     const pathname = window.location.pathname.split('/');
@@ -18,18 +21,6 @@ export const CartItem = (props: ICartProps) => {
 
     const { id, title, image_url, price, currency, authors, quantity, totalPrice } = props;
     const { dispatch } = useCartContext();
-
-    const handleRenderAuthors = () => {
-        const authorNames = authors.map((item) => item.name);
-        return authorNames.join(', ');
-    };
-
-    const handleFormatCurrency = (currency: string, price: number) => {
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency,
-        }).format(price);
-    };
 
     const handleAddItemToCart = (event: any) => {
         dispatch(addItemToCart(props));
@@ -45,6 +36,7 @@ export const CartItem = (props: ICartProps) => {
 
     const handleRemoveItemFromCart = (event: any) => {
         dispatch(removeItemFromCart(props));
+        dispatch(restockCartItem(props));
         dispatch(getCurrentActiveBook({ id: bookId }));
     };
 
@@ -55,7 +47,7 @@ export const CartItem = (props: ICartProps) => {
 
                 <div className="book__details">
                     <p className="book__title">{title}</p>
-                    <p className="book__author">{handleRenderAuthors()}</p>
+                    <p className="book__author">{handleRenderAuthors(authors)}</p>
                     <button className="remove__button" onClick={handleRemoveItemFromCart}>
                         remove
                     </button>

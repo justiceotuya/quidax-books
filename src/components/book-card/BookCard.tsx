@@ -5,6 +5,7 @@ import { ReactComponent as HeartIcon } from './assets/heart.svg';
 import { ReactComponent as PeopleIcon } from './assets/people.svg';
 import { RatingStars } from '..';
 import { addItemToCart, subtractQuantityFromBookItem, toggleCartDisplay, useCartContext } from '../../redux';
+import { handleFormatCurrency, handleParseYear, handleRenderAuthors, handleRenderGenre } from '../../utils';
 
 interface Props {
     id: string;
@@ -19,6 +20,7 @@ interface Props {
     available_copies: number;
     genres: { name: string; id: string }[];
     rating: number;
+    availableStoreBooks: number;
 }
 
 export const BookCard = (props: Props) => {
@@ -35,26 +37,18 @@ export const BookCard = (props: Props) => {
         likes,
         rating,
         number_of_purchases,
+        availableStoreBooks,
     } = props;
 
     const { state, dispatch } = useCartContext();
 
-    const handleRenderAuthors = () => {
-        const authorNames = authors.map((item) => item.name);
-        return authorNames.join(', ');
-    };
-
-    const handleRenderGenre = () => {
-        const genreNames = genres.map((item) => item.name);
-        return genreNames.join(', ');
-    };
-
-    const handleParseYear = () => new Date(release_date).getFullYear();
-
     const handleAddItemToCart = (event: any) => {
+        //stop event bubling since the card is a link and the button is on the card
         event.preventDefault();
         event.stopPropagation();
-        dispatch(addItemToCart(props));
+        //add item to cart but reset the available copies
+        dispatch(addItemToCart({ ...props, available_copies: availableStoreBooks }));
+        //subtract quantity from the books
         dispatch(subtractQuantityFromBookItem(props));
         dispatch(toggleCartDisplay());
     };
@@ -67,9 +61,9 @@ export const BookCard = (props: Props) => {
             <div className="book__details">
                 <p className="book__title">{title}</p>
                 <p className="book__author">
-                    {handleRenderAuthors()} - {handleParseYear()}
+                    {handleRenderAuthors(authors)} - {handleParseYear(release_date)}
                 </p>
-                <p className="book__genre">{handleRenderGenre()}</p>
+                <p className="book__genre">{handleRenderGenre(genres)}</p>
                 <div className="book__performance">
                     <div className="book__people">
                         <div className="book__readers">
@@ -90,9 +84,7 @@ export const BookCard = (props: Props) => {
                     </div>
                 </div>
                 <div className="book__availability__container">
-                    <p className="book__price">
-                        {new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(price)}
-                    </p>
+                    <p className="book__price">{handleFormatCurrency(currency, price)}</p>
                     {available_copies > 0 ? (
                         <p className="book__availability">{available_copies} Copies Available</p>
                     ) : (

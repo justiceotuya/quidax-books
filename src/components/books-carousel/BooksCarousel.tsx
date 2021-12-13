@@ -7,6 +7,7 @@ import { ReactComponent as PeopleIcon } from './assets/people.svg';
 
 import { IModifiedBook } from '../../redux/slice/bookListSlice';
 import { RatingStars } from '..';
+import { handleParseYear, handleRenderAuthors, handleRenderGenre, handleRenderTags } from '../../utils';
 
 interface Props {
     data: IModifiedBook[];
@@ -15,19 +16,19 @@ interface Props {
 export const BooksCarousel = (props: Props) => {
     const { data } = props;
 
-    const [newArray, setNewArray] = useState([] as IModifiedBook[]);
+    const [featuredBookList, setFeaturedBookList] = useState([] as IModifiedBook[]);
     const [selected, setSelected] = useState(0);
 
     React.useEffect(() => {
         if (data) {
-            const newData = data.filter((item) => item.featured);
+            const featuredBooks = data.filter((item) => item.featured);
             //to great the slide effect double the featured item
-            setNewArray([...newData, ...newData]);
+            setFeaturedBookList([...featuredBooks]);
         }
     }, [data]);
 
     const handleClickRightButton = () => {
-        if (selected === newArray.length - 1) {
+        if (selected === featuredBookList.length - 1) {
             setSelected(0);
         } else {
             setSelected((selected) => selected + 1);
@@ -36,36 +37,19 @@ export const BooksCarousel = (props: Props) => {
 
     const handleClickLeftButton = () => {
         if (selected === 0) {
-            setSelected(newArray.length - 1);
+            setSelected(featuredBookList.length - 1);
         } else {
             setSelected((selected) => selected - 1);
         }
     };
 
-    const handleRenderAuthors = (authors: { name: string }[]) => {
-        const authorNames = authors.map((item) => item.name);
-        return authorNames.join(', ');
-    };
-
-    const handleRenderGenre = (genres: { name: string }[]) => {
-        const genreNames = genres.map((item) => item.name);
-        return genreNames.join(', ');
-    };
-
-    const handleRenderTags = (tags: { name: string }[]) => {
-        const tagNames = tags?.map((item) => item.name) || [];
-        return tagNames.join(', ');
-    };
-
-    const handleParseYear = (release_date: string) => new Date(release_date).getFullYear();
-
     return (
-        <StyledBooksCarousel arrayLength={newArray.length} selected={selected}>
+        <StyledBooksCarousel arrayLength={featuredBookList.length} selected={selected}>
             <button className="carousel__control carousel__left" onClick={handleClickLeftButton}>
                 <ArrowLeft />
             </button>
             <div className="imageSlider">
-                {newArray.map((item, index) => (
+                {featuredBookList.map((item, index) => (
                     <StyledImageContainerLink
                         to={`/books/${item.id}`}
                         key={item.id}
@@ -126,7 +110,7 @@ export const BooksCarousel = (props: Props) => {
             </button>
 
             <div className="indicator__container">
-                {newArray.map((item, index) => (
+                {featuredBookList.map((item, index) => (
                     <StyledIndicator
                         key={index}
                         selected={selected}
