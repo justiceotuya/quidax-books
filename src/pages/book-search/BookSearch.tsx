@@ -46,7 +46,7 @@ export const BookSearch = (props: Props) => {
             if (bookListResult.length === 0) {
                 return (
                     <p className="booksList__title">
-                        no results <span>found for</span> {searchText};
+                        no results <span>found for</span> {searchText}
                     </p>
                 );
             } else {

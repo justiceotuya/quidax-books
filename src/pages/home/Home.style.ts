@@ -7,8 +7,9 @@ export const StyledHome = styled.div`
     .carousel__title {
         max-width: calc(1400px - 80px);
         margin: 0 auto;
-        /* padding: 0 40px; */
+        width: calc(100% - 80px);
     }
+
     .booksList__container {
         max-width: 1400px;
         margin: 0 auto;
